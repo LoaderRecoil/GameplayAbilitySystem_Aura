@@ -13,7 +13,7 @@ public:
 	bool IsBlockedHit() const { return bIsBlockedHit; }
 	bool IsCriticalHit() const { return bIsCriticalHit; }
 
-	void SetIsCriticalHit(bool bIsInCriticalHit) { bIsInCriticalHit = bIsInCriticalHit; }
+	void SetIsCriticalHit(bool bIsInCriticalHit) { bIsCriticalHit = bIsInCriticalHit; }
 	void SetIsBlockedHit(bool bIsInBlockedHit) { bIsBlockedHit = bIsInBlockedHit; }
 		
 
