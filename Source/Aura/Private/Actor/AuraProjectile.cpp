@@ -19,6 +19,10 @@ AAuraProjectile::AAuraProjectile()
 	PrimaryActorTick.bCanEverTick = false;
 	bReplicates = true;
 
+	// TODO: Added line of code. Works to fix issue where firebolt would not match server correctly
+	// FireBolt on client would fly away but is hitting target on server
+	AActor::SetReplicateMovement(true);
+
 	Sphere = CreateDefaultSubobject<USphereComponent>("Sphere");
 	SetRootComponent(Sphere);
 	Sphere->SetCollisionObjectType(ECC_Projectile);
@@ -73,6 +77,8 @@ void AAuraProjectile::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent,
 	AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,
 	bool bFromSweep, const FHitResult& SweepResult)
 {
+	// TODO: Added a fix for sever crashes on projectiles fired! (Client and enemies projectiles would crash game)
+	if (!IsValid(DamageEffectParams.SourceAbilitySystemComponent)) return;
 	AActor* SourceAvatarActor = DamageEffectParams.SourceAbilitySystemComponent->GetAvatarActor();
 	if (SourceAvatarActor == OtherActor) return;
 	if (!UAuraAbilitySystemLibrary::IsNotFriend(SourceAvatarActor, OtherActor)) return;
