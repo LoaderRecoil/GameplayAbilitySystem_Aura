@@ -17,7 +17,6 @@
 #include "AuraGameplayTags.h"
 #include "Game/AuraGameModeBase.h"
 #include "Kismet/GameplayStatics.h"
-#include "Game/AuraGameInstance.h"
 #include "Game/LoadScreenSaveGame.h"
 #include "AbilitySystem/AuraAttributeSet.h"
 #include "AbilitySystem/AuraAbilitySystemLibrary.h"
@@ -60,6 +59,12 @@ void AAuraCharacter::PossessedBy(AController* NewController)
 	LoadProgress();
 
 	AddCharacterAbilities();
+
+	if(AAuraGameModeBase* AuraGameMode = Cast<AAuraGameModeBase>(UGameplayStatics::GetGameMode(this)))
+	{
+		AuraGameMode->LoadWorldState(GetWorld());
+	}
+
 
 }
 
