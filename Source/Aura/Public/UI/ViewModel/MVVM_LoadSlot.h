@@ -36,6 +36,9 @@ public:
 	UPROPERTY()
 	FName PlayerStartTag;
 
+	UPROPERTY()
+	FString MapAssetName;
+
 	/** Feild Notifies */
 
 	void SetPlayerName(FString InPlayerName);
