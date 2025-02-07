@@ -14,6 +14,7 @@ class USpellMenuWidgetController;
 struct FWidgetControllerParams;
 class UAbilityInfo;
 class ULoadScreenSaveGame;
+class ULootTiers;
 /**
  * 
  */
@@ -62,6 +63,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "AuraAbilitySystemLibrary|CharacterClassDefaults")
 	static UAbilityInfo* GetAbilityInfo(const UObject* WorldContextObject);
+
+	UFUNCTION(BlueprintCallable, Category = "AuraAbilitySystemLibrary|CharacterClassDefaults", meta = (DefaultToSelf = "WorldContextObject"))
+	static ULootTiers* GetLootTiers(const UObject* WorldContextObject);
 
 	/*
 	* Effect Context Getters
